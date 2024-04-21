@@ -52,6 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Custom
+fractol
 .vscode
 .DS_Store
 mlx_linux
