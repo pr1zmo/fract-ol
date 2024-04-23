@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:22:24 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/22 20:25:36 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:42:24 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,16 @@ typedef struct	s_RGB{
     uint8_t	b;
 }				RGB;
 
-RGB get_color(int iteration, int max_iterations)
+RGB get_color(int t, int max_iterations)
 {
 	RGB	color;
-	color.r = (255 * iteration) / max_iterations;
-	color.g = (255 * (max_iterations - iteration)) / max_iterations;
-	color.b = (255 * iteration) / (2 * max_iterations);
+	int	factor;
+	
+	factor = 255 / max_iterations;
+	color.r = 255 - factor * t;
+	color.g = 255 - factor * t;
+	color.b = 255;
+
 	return (color);
 }
 
@@ -76,8 +80,8 @@ void	draw_pixels(t_config *settings, t_data *img, void *mlx_window)
 	{
 		for (int k = 0; k < HEIGHT; k++)
 		{
-			c.x = scale_number(i, HEIGHT, -2.0 * settings->zoom + settings->offsetX, 2.0 * settings->zoom + settings->offsetX);
-			c.y = scale_number(k, WIDTH, 2.0 * settings->zoom + settings->offsetY, -2.0 * settings->zoom + settings->offsetY);
+			c.x = scale_number(i, HEIGHT, -2.0 * settings->zoom + settings->offset_x, 2.0 * settings->zoom + settings->offset_x);
+			c.y = scale_number(k, WIDTH, 2.0 * settings->zoom + settings->offset_y, -2.0 * settings->zoom + settings->offset_y);
 			z.x = 0;
 			z.y = 0;
 			t = 0;
@@ -95,8 +99,8 @@ void	redraw(t_config *config, t_vars *vars)
 	t_data	img;
 
 	img.img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								 &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, 
+				&img.line_length, &img.endian);
 	draw_pixels(config, &img, vars->win);
 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
 }
@@ -109,17 +113,17 @@ int	change_param(int keycode, void *param)
 	config = (t_config *)param;
 	vars = &config->vars;
 	if (keycode == UP_ARROW)
-		config->offsetY += 0.1;
+		config->offset_y += 0.1;
 	else if (keycode == ENTER && config->iterations > 100)
-		config->iterations -= 100;
+		config->iterations -= 50;
 	else if (keycode == C_KEY)
-		config->iterations += 100;
+		config->iterations += 50;
 	else if (keycode == DOWN_ARROW)
-		config->offsetY -= 0.1;
+		config->offset_y -= 0.1;
 	else if (keycode == LEFT_ARROW)
-		config->offsetX -= 0.1;
+		config->offset_x -= 0.1;
 	else if (keycode == RIGHT_ARROW)
-		config->offsetX += 0.1;
+		config->offset_x += 0.1;
 	else if (keycode == ZOOM_IN)
 		config->zoom /= 1.1;
 	else if (keycode == ZOOM_OUT)
@@ -143,7 +147,7 @@ int main()
 
 	mlx_ptr = mlx_init();
 	mlx_window = mlx_new_window(mlx_ptr, WIDTH, HEIGHT, "Fractol");
-	t_config	settings = {1.0, 0.0, 0.0, 300, mlx_ptr, mlx_window};
+	t_config	settings = {1.0, 0.0, 0.0, 60, mlx_ptr, mlx_window};
 	img.img = mlx_new_image(mlx_ptr, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								 &img.endian);
@@ -155,20 +159,3 @@ int main()
 	mlx_loop(mlx_ptr);
 	return (0);
 }
-
-/* int	show_key(int key_value, void *param)
-{
-	printf("Code of the pressed key: %d\n", key_value);
-	return (0);
-}
-
-int main()
-{
-	void	*mlx_ptr;
-	void	*mlx_window;
-
-	mlx_ptr = mlx_init();
-	mlx_window = mlx_new_window(mlx_ptr, WIDTH, HEIGHT, "Fractol");
-	mlx_hook(mlx_window, EVENT_KEY_DOWN, MASK, show_key, NULL);
-	mlx_loop(mlx_ptr);
-} */
