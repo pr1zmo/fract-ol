@@ -6,39 +6,19 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:24:24 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/22 22:31:08 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:17:52 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include "libft/libft.h"
+# include "settings.h"
 # include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
-
-# define C_KEY 8
-# define ESCAPE 53
-# define LEFT_ARROW 123
-# define RIGHT_ARROW 124
-# define DOWN_ARROW 125
-# define UP_ARROW 126
-# define ZOOM_IN 69
-# define ZOOM_OUT 78
-# define EVENT_KEY_DOWN 2
-# define ENTER 36
-# define RED 0x00FF0000
-# define GREEN 0x0000FF00
-# define BLUE 0x000000FF
-# define WHITE 0x00FFFFFF
-# define YELLOW 0x00FFFF00
-# define INDIGO 0x0000FF99
-# define PURPLE 0x009933FF
-# define BLACK 0x00000000
-# define WIDTH 1080
-# define HEIGHT 1080
 
 typedef struct s_vars
 {
@@ -69,5 +49,7 @@ typedef struct s_complex
 	double	x;
 	double	y;
 }	t_complex;
+
+
 
 #endif

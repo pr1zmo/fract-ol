@@ -1,5 +1,5 @@
 NAME	=	fractol
-FILES	=	main.c
+FILES	=	main.c src/colors.c src/julia.c src/mandelbrot.c
 OBJ		=	$(FILES:.c=.o)
 CC		=	cc
 #CFLAGS	=	-Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:22:24 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/23 10:42:24 by zelbassa         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:20:02 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,6 @@ t_complex	square_complex(t_complex z)
 	result.x = (z.x * z.x) - (z.y * z.y);
 	result.y = z.x * z.y * 2;
 	return result;
-}
-
-typedef struct	s_RGB{
-    uint8_t	r;
-    uint8_t	g;
-    uint8_t	b;
-}				RGB;
-
-RGB get_color(int t, int max_iterations)
-{
-	RGB	color;
-	int	factor;
-	
-	factor = 255 / max_iterations;
-	color.r = 255 - factor * t;
-	color.g = 255 - factor * t;
-	color.b = 255;
-
-	return (color);
 }
 
 void	draw_pixels(t_config *settings, t_data *img, void *mlx_window)
