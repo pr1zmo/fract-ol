@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 21:24:24 by prizmo            #+#    #+#             */
+/*   Created: 2024/04/02 21:24:24 by zelbassa          #+#    #+#             */
 /*   Updated: 2024/04/24 13:20:48 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -72,10 +72,17 @@ double		scale_number(double num, double old_max, double old_min,
 				double new_max);
 t_RGB		black_n_white(int iteration, int max_iterations);
 t_RGB		colorful_variation(int iterations, int max_iterations);
-int			render(t_config configs, t_complex c, t_complex z, t_params *ints);
+void		draw_pixel(t_config configs, t_complex c, t_complex z, t_params *ints);
 int			mandelbrot(t_config configs, t_complex c, t_complex z,
 				t_params *ints);
 int			julia(t_config configs, t_complex c, t_complex z, t_params ints);
+t_complex	sum_complex(t_complex z1, t_complex z2);
+t_complex	square_complex(t_complex z);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		render(t_config *settings, t_data *img);
+void		draw(t_config *config, t_vars *vars);
+double		scale_number(double num, double old_max,
+				double new_min, double new_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 

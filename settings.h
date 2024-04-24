@@ -26,5 +26,7 @@
 # define MASK 1L << 0
 # define WIDTH 400
 # define HEIGHT 400
+# define ITER 60
+# define PALETTE 1
 
 #endif

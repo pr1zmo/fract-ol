@@ -1,21 +1,33 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 09:54:40 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/24 13:24:31 by zelbassa         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../fractol.h"
 
-int	render(t_config configs, t_complex c, t_complex z, t_params *ints)
+void	render(t_config *settings, t_data *img)
 {
-	if (ft_strncmp(configs.name, "mandelbrot", 10) == 0)
-		return (mandelbrot(configs, c, z, ints));
-	else if (ft_strncmp(configs.name, "julia", 10) == 0)
-		julia(configs, c, z, *ints);
+	t_complex	c;
+	t_complex	z;
+	t_params	ints;
+
+	ints.i = 0;
+	ints.k = 0;
+	ints.t = 0;
+	while (ints.i < WIDTH)
+	{
+		while (ints.k < HEIGHT)
+		{
+			draw_pixel(*settings, c, z, &ints);
+			ints.k++;
+		}
+		ints.k = 0;
+		ints.i++;
+	}
+}
+
+void	draw(t_config *config, t_vars *vars)
+{
+	t_data	img;
+
+	img.img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
+	render(config, &img);
+	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
 }
