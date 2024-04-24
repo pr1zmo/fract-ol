@@ -13,62 +13,70 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include "libft/libft.h"
-# include <mlx.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
+# include "mlx.h"
+# include "settings.h"
 # include <math.h>
+# include <stdint-gcc.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-#define C_KEY 8
-#define ESCAPE 53
-#define	LEFT_ARROW 123
-#define	RIGHT_ARROW 124
-#define	DOWN_ARROW 125
-#define	UP_ARROW 126
-#define ZOOM_IN 69
-#define ZOOM_OUT 78
-#define EVENT_KEY_DOWN 2
-#define ENTER 36
-#define	MASK 1L<<0
-#define RED 0x00FF0000
-#define GREEN 0x0000FF00
-#define BLUE 0x000000FF
-#define WHITE 0x00FFFFFF
-#define YELLOW 0x00FFFF00
-#define INDIGO 0x0000FF99
-#define PURPLE 0x009933FF
-#define BLACK 0x00000000
-#define WIDTH 1080
-#define HEIGHT 1080
+typedef struct s_RGB
+{
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+}                       t_RGB;
 
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}	t_vars;
+typedef struct s_vars
+{
+    void    *mlx;
+    void    *win;
+}                       t_vars;
 
 typedef struct s_config
 {
-	double	zoom;
-	double	offsetX;
-	double	offsetY;
-	int		iterations;
-	t_vars	vars;
-}	t_config;
+    double  zoom;
+    double  offsetX;
+    double	offsetY;
+    int		iterations;
+    char	*name;
+    t_vars	vars;
+}			t_config;
 
 typedef struct s_data
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
+    void	*img;
+    char	*addr;
+    int		bits_per_pixel;
+    int		line_length;
+    int		endian;
+}			t_data;
 
 typedef struct s_complex
 {
-	double	x;
-	double	y;
-}	t_complex;
+    double	x;
+    double	y;
+}			t_complex;
+
+typedef struct s_params
+{
+    int	i;
+    int	k;
+    int	t;
+}		t_params;
+
+t_RGB		int_to_rgb(int iteration, int max_iterations);
+t_RGB		get_color(int variation, int iteration, int max_iterations);
+double		scale_number(double num, double old_max, double old_min,
+                             double new_max);
+t_RGB		black_n_white(int iteration, int max_iterations);
+t_RGB		colorful_variation(int iterations, int max_iterations);
+int			render(t_config configs, t_complex c, t_complex z, t_params *ints);
+int			mandelbrot(t_config configs, t_complex c, t_complex z,
+                                   t_params *ints);
+int			julia(t_config configs, t_complex c, t_complex z, t_params ints);
+t_complex	sum_complex(t_complex z1, t_complex z2);
+t_complex	square_complex(t_complex z);
 
 #endif

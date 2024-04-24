@@ -1,10 +1,11 @@
 NAME	=	fractol
-FILES	=	main.c
+FILES	=	src/fractol.c src/julia.c src/mandelbrot.c src/render.c src/color.c
+
 OBJ		=	$(FILES:.c=.o)
 CC		=	cc
 #CFLAGS	=	-Wall -Wextra -Werror
 LIBFT	=	libft/libft.a
-MLX		= 	-lmlx -framework OpenGL -framework AppKit
+MLX		=	mlx/libmlx.a -lXext -lX11 -lm
 
 all: $(NAME)
 
