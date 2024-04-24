@@ -24,11 +24,9 @@
 # define EVENT_KEY_DOWN 2
 # define ENTER 65293
 //# define MASK 1L<<0
-# define WIDTH 400
-# define HEIGHT 400
-# define OFFSET_X 0
-# define OFFSET_Y 0
-# define ZOOM 1
-# define ITER 60
+# define LEFT_SHIFT 65505
+# define H_KEY 104
+# define WIDTH 500
+# define HEIGHT 500
 
 #endif

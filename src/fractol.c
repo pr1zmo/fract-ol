@@ -17,118 +17,28 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
-double scale_number(double num, double old_max, double new_min, double new_max)
+void	close_window(t_vars *vars)
 {
-	double proportion = (num) / (old_max);
-	double scaled_value = new_min + (proportion * (new_max - new_min));
-	return scaled_value;
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(0);
 }
 
-t_complex	sum_complex(t_complex z1, t_complex z2)
+void	config_init(t_config *settings, char *av, t_vars vars, t_data img)
 {
-	t_complex	c;
-
-	c.x = z1.x + z2.x;
-	c.y = z1.y + z2.y;
-	return (c);
-}
-
-t_complex	square_complex(t_complex z)
-{
-	t_complex result;
-
-	result.x = (z.x * z.x) - (z.y * z.y);
-	result.y = z.x * z.y * 2;
-	return result;
-}
-
-void	draw_pixels(t_config *settings, t_data *img)
-{
-	t_complex	c;
-	t_complex	z;
-	t_params	ints;
-	t_RGB		color;
-    int         int_color;
-
-    ints.i = 0;
-    ints.k = 0;
-    ints.t = 0;
-	while (ints.i < WIDTH)
-	{
-		while (ints.k < HEIGHT)
-		{
-			ints.t = render(*settings, c, z, &ints);
-            color = get_color(2, ints.t, settings->iterations);
-            int_color = (color.r << 16) | (color.g << 8) | color.b;
-            my_mlx_pixel_put(img, ints.i, ints.k, int_color);
-            ints.k++;
-		}
-        ints.k = 0;
-        ints.i++;
-	}
-}
-
-void	redraw(t_config *config, t_vars *vars)
-{
-	t_data	img;
-
-	img.img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								 &img.endian);
-    draw_pixels(config, &img);
-	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
-}
-
-void    close_window(t_vars *vars)
-{
-    mlx_destroy_window(vars->mlx, vars->win);
-    exit(0);
-}
-
-int	change_param(int keycode, void *param)
-{
-	t_config	*config;
-	t_vars		*vars;
-
-	config = (t_config *)param;
-	vars = &config->vars;
-	if (keycode == ENTER && config->iterations > 100)
-		config->iterations -= 100;
-	else if (keycode == UP_ARROW)
-		config->offset_y += 0.1 * config->zoom;
-	else if (keycode == C_KEY)
-		config->iterations += 100;
-	else if (keycode == DOWN_ARROW)
-		config->offset_y -= 0.1 * config->zoom;
-	else if (keycode == LEFT_ARROW)
-		config->offset_x -= 0.1 * config->zoom;
-	else if (keycode == RIGHT_ARROW)
-		config->offset_x += 0.1 * config->zoom;
-	else if (keycode == ZOOM_IN)
-		config->zoom /= 1.1;
-	else if (keycode == ZOOM_OUT)
-		config->zoom *= 1.1;
-	else if (keycode == ESCAPE)
-		close_window(vars);
-	redraw(config, vars);
-	printf("Key pressed: %d\n", keycode);
-	return (0);
-}
-
-void	config_init(t_config *settings, char *av, t_vars vars)
-{
-	settings->zoom = ZOOM;
-	settings->iterations = ITER;
+	settings->zoom = 1;
+	settings->iterations = 60;
 	settings->name = av;
-	settings->offset_x = OFFSET_X;
-	settings->offset_y = OFFSET_Y;
+	settings->offset_x = 0;
+	settings->offset_y = 0;
+	settings->palette = 1;
 	settings->vars = vars;
+	settings->img = img;
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	void		*mlx_ptr;
 	void		*mlx_window;
@@ -139,15 +49,16 @@ int main(int ac, char **av)
 	if (ac != 2)
 		exit(0);
 	mlx_ptr = mlx_init();
-	mlx_window = mlx_new_window(mlx_ptr, WIDTH, HEIGHT, av[1]?av[1]:"Fractal");
+	mlx_window = mlx_new_window(mlx_ptr, WIDTH, HEIGHT, av[1]);
 	img.img = mlx_new_image(mlx_ptr, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	vars.mlx = mlx_ptr;
 	vars.win = mlx_window;
-	config_init(&settings, av[1], vars);
-	draw_pixels(&settings, &img);
-	mlx_key_hook(mlx_window, change_param, &settings);
+	config_init(&settings, av[1], vars, img);
+	draw(&settings, &img);
+	mlx_key_hook(mlx_window, handle_events, &settings);
+	mlx_mouse_hook(mlx_window, handle_mouse, &settings);
 	mlx_put_image_to_window(mlx_ptr, mlx_window, img.img, 0, 0);
 	mlx_loop(mlx_ptr);
 	return (0);
