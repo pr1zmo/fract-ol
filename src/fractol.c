@@ -45,12 +45,12 @@ t_complex	square_complex(t_complex z)
 	return result;
 }
 
-void draw_pixels(t_config *settings, t_data *img)
+void	draw_pixels(t_config *settings, t_data *img)
 {
 	t_complex	c;
 	t_complex	z;
-	t_params    ints;
-    t_RGB       color;
+	t_params	ints;
+	t_RGB		color;
     int         int_color;
 
     ints.i = 0;
@@ -60,7 +60,7 @@ void draw_pixels(t_config *settings, t_data *img)
 	{
 		while (ints.k < HEIGHT)
 		{
-            ints.t = render(*settings, c, z, &ints);
+			ints.t = render(*settings, c, z, &ints);
             color = get_color(2, ints.t, settings->iterations);
             int_color = (color.r << 16) | (color.g << 8) | color.b;
             my_mlx_pixel_put(img, ints.i, ints.k, int_color);
@@ -98,24 +98,34 @@ int	change_param(int keycode, void *param)
 	if (keycode == ENTER && config->iterations > 100)
 		config->iterations -= 100;
 	else if (keycode == UP_ARROW)
-		config->offsetY += 0.1 * config->zoom;
+		config->offset_y += 0.1 * config->zoom;
 	else if (keycode == C_KEY)
 		config->iterations += 100;
 	else if (keycode == DOWN_ARROW)
-		config->offsetY -= 0.1 * config->zoom;
+		config->offset_y -= 0.1 * config->zoom;
 	else if (keycode == LEFT_ARROW)
-		config->offsetX -= 0.1 * config->zoom;
+		config->offset_x -= 0.1 * config->zoom;
 	else if (keycode == RIGHT_ARROW)
-		config->offsetX += 0.1 * config->zoom;
+		config->offset_x += 0.1 * config->zoom;
 	else if (keycode == ZOOM_IN)
 		config->zoom /= 1.1;
 	else if (keycode == ZOOM_OUT)
 		config->zoom *= 1.1;
 	else if (keycode == ESCAPE)
-        close_window(vars);
+		close_window(vars);
 	redraw(config, vars);
 	printf("Key pressed: %d\n", keycode);
 	return (0);
+}
+
+void	config_init(t_config *settings, char *av, t_vars vars)
+{
+	settings->zoom = ZOOM;
+	settings->iterations = ITER;
+	settings->name = av;
+	settings->offset_x = OFFSET_X;
+	settings->offset_y = OFFSET_Y;
+	settings->vars = vars;
 }
 
 int main(int ac, char **av)
@@ -124,18 +134,19 @@ int main(int ac, char **av)
 	void		*mlx_window;
 	t_vars		vars;
 	t_data		img;
+	t_config	settings;
 
-    (void)ac;
+	if (ac != 2)
+		exit(0);
 	mlx_ptr = mlx_init();
 	mlx_window = mlx_new_window(mlx_ptr, WIDTH, HEIGHT, av[1]?av[1]:"Fractal");
-	t_config	settings = {1.0, 0.0, 0.0, 60,
-                            av[1], mlx_ptr, mlx_window};
 	img.img = mlx_new_image(mlx_ptr, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								 &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &img.endian);
 	vars.mlx = mlx_ptr;
 	vars.win = mlx_window;
-    draw_pixels(&settings, &img);
+	config_init(&settings, av[1], vars);
+	draw_pixels(&settings, &img);
 	mlx_key_hook(mlx_window, change_param, &settings);
 	mlx_put_image_to_window(mlx_ptr, mlx_window, img.img, 0, 0);
 	mlx_loop(mlx_ptr);

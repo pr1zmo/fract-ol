@@ -13,18 +13,22 @@
 #ifndef SETTINGS_H
 # define SETTINGS_H
 
-#define C_KEY 99
-#define ESCAPE 65307
-#define	LEFT_ARROW 65361
-#define	RIGHT_ARROW 65363
-#define	DOWN_ARROW 65364
-#define	UP_ARROW 65362
-#define ZOOM_IN 65451
-#define ZOOM_OUT 65453
-#define EVENT_KEY_DOWN 2
-#define ENTER 65293
-#define	MASK 1L<<0
-#define WIDTH 400
-#define HEIGHT 400
+# define C_KEY 99
+# define ESCAPE 65307
+# define LEFT_ARROW 65361
+# define RIGHT_ARROW 65363
+# define DOWN_ARROW 65364
+# define UP_ARROW 65362
+# define ZOOM_IN 65451
+# define ZOOM_OUT 65453
+# define EVENT_KEY_DOWN 2
+# define ENTER 65293
+//# define MASK 1L<<0
+# define WIDTH 400
+# define HEIGHT 400
+# define OFFSET_X 0
+# define OFFSET_Y 0
+# define ZOOM 1
+# define ITER 60
 
 #endif
