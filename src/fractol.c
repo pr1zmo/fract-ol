@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:22:24 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/25 18:19:04 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/25 18:30:22 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	check_args(int ac, char **av)
 	if (ac < 2)
 		exit_handler();
 	if (ac == 2 && ft_strncmp("mandelbrot", av[1], 10) == 0)
-		return;
+		return ;
 	if (ac == 4 && ft_strncmp("julia", av[1], 5) == 0)
-		return;
+		return ;
 	else
 		exit_handler();
 }
