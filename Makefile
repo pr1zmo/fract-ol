@@ -1,6 +1,6 @@
 NAME	=	fractol
 FILES	=	src/fractol.c src/julia.c src/mandelbrot.c src/render.c src/color.c \
-			src/math_utils.c src/configs.c
+			src/math_utils.c src/configs.c src/mouse.c src/errors.c
 
 OBJ		=	$(FILES:.c=.o)
 CC		=	cc

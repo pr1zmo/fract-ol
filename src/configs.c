@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   configs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 09:54:34 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/24 09:54:34 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/25 14:49:45 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	handle_events(int keycode, void *param)
 	else if (keycode == LEFT_SHIFT)
 		change_color(config, vars);
 	else if (keycode == ESCAPE)
-		close_window(vars);
+		close_window(keycode, config);
 	printf("iterations: %d\n", keycode);
 	return (0);
 }

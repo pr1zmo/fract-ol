@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.c                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 14:21:19 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/25 14:21:20 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/25 14:39:21 by prizmo            #+#    #+#             */
+/*   Updated: 2024/04/25 18:22:52 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int	handle_mouse(int button, int x, int y, t_config *config)
+void    exit_handler()
 {
-	t_vars	*vars;
-
-	vars = &config->vars;
-	if (button == 4)
-		config->zoom /= 1.1;
-	else if (button == 5)
-		config->zoom *= 1.1;
-	else if (button == 1)
-	{
-		config->offset_x = 0;
-		config->offset_y = 0;
-	}
-	redraw(config, vars);
+    ft_putendl_fd("Usage: ./fractol [mandelbrot | julia] [julia arguments]", 2);
+    exit(1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 09:54:40 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/24 09:54:40 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/25 14:47:08 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	render(t_config configs, t_complex c, t_complex z, t_params *ints)
 {
 	if (ft_strncmp(configs.name, "mandelbrot", 10) == 0)
 		return (mandelbrot(configs, c, z, ints));
-	else if (ft_strncmp(configs.name, "julia", 10) == 0)
-		return (julia(configs, c, z, *ints));
+	else if (ft_strncmp(configs.name, "julia", 5) == 0)
+		return (julia(configs, c, z, ints));
 	return (0);
 }
 
