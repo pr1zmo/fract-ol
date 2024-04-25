@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:22:24 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/25 18:30:22 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/25 19:52:13 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 int	close_window(int keycode, t_config *settings)
 {
 	mlx_destroy_image(settings->vars.mlx, settings->img.img);
-	mlx_destroy_window(settings->vars.mlx, settings->vars.win);
 	mlx_destroy_display(settings->vars.mlx);
+	mlx_destroy_window(settings->vars.mlx, settings->vars.win);
 	free(settings->vars.mlx);
 	exit(EXIT_SUCCESS);
 }
@@ -45,6 +45,11 @@ void	config_init(t_config *settings, char **av, t_vars vars, t_data img)
 	{
 		settings->julia.x = atoi_double(av[2]);
 		settings->julia.y = atoi_double(av[3]);
+	}
+	else
+	{
+		settings->julia.x = 0.0;
+		settings->julia.y = 0.0;
 	}
 	settings->vars = vars;
 	settings->img = img;
@@ -82,8 +87,8 @@ int	main(int ac, char **av)
 	draw(&settings, &img);
 	mlx_key_hook(mlx_window, handle_events, &settings);
 	mlx_mouse_hook(mlx_window, handle_mouse, &settings);
+	mlx_hook(mlx_window, 17, 0, close_window, &settings);
 	mlx_put_image_to_window(mlx_ptr, mlx_window, img.img, 0, 0);
-	mlx_hook(vars.win, 17, 1L << 0, close_window, &settings);
 	mlx_loop(mlx_ptr);
 	return (0);
 }

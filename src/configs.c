@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 09:54:34 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/25 14:49:45 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/25 18:33:47 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ int	handle_events(int keycode, void *param)
 		change_color(config, vars);
 	else if (keycode == ESCAPE)
 		close_window(keycode, config);
-	printf("iterations: %d\n", keycode);
 	return (0);
 }

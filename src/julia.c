@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 09:54:34 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/25 18:30:00 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/25 18:58:08 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	julia(t_config configs, t_complex c, t_complex z, t_params *ints)
 {
-	if (configs.julia.x > 1 || configs.julia.y > 1
-		|| configs.julia.x < -1 || configs.julia.y < -1)
+	if (configs.julia.x > 2.0 || configs.julia.y > 2.0
+		|| configs.julia.x < -2.0 || configs.julia.y < -2.0)
 		exit_handler();
 	c.x = scale_number(ints->i, HEIGHT, -2.0 * configs.zoom
 			+ configs.offset_x, 2.0 * configs.zoom + configs.offset_x);

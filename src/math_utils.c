@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 09:54:34 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/25 18:29:50 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/25 18:56:22 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,26 @@ double	atoi_double(char *str)
 
 	result = 0;
 	i = 0;
-	if (str[i] == '-')
+	sign = 1;
+	if (ft_atoi(str) > 1 || ft_atoi(str) < -1)
+		exit_handler();
+	while (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
-		i += 3;
+		if (str[i] == '-')
+		{
+			sign *= -1;
+		}
+		i++;
 	}
-	else
-	{
-		sign = 1;
-		i += 2;
-	}
+	while (str[i] == '0')
+		i++;
+	if (str[i] != '0' && ft_isdigit(str[i]))
+		result += (str[i] - '0');
+	while (str[i] != '.')
+		i++;
+	i += 1;
 	k = 1;
-	while (str[i])
+	while (str[i] && ft_isdigit(str[i]))
 	{
 		result += (str[i] - '0') * recursive_num(k);
 		i++;
