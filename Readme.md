@@ -32,12 +32,11 @@ Run the program
 ./fractol [mandelbrot | julia (arguments) | burning_ship]
 ```
 
-
 ## Screenshots
 
 ![Screenshot 1: ](https://raw.githubusercontent.com/zelbassa/fract-ol/master/screenshots/Screenshot%20from%202024-04-25%2018-47-59.png?token=GHSAT0AAAAAACRMPTFPSPD7Y6P63HCYCFXQZRLZKLA)
 
-![Screenshot 2: ](https://raw.githubusercontent.com/zelbassa/fract-ol/master/screenshots/Screenshot%20from%202024-04-25%2018-47-59.png?token=GHSAT0AAAAAACRMPTFPSPD7Y6P63HCYCFXQZRLZKLA)
+![Screenshot 2: ](https://github.com/zelbassa/fract-ol/blob/master/screenshots/Screenshot%20from%202024-04-26%2015-33-09.png?raw=true)
 
 ![Screenshot 3: ](https://github.com/zelbassa/fract-ol/blob/master/screenshots/Screenshot%20from%202024-04-26%2015-33-09.png?raw=true)
 
