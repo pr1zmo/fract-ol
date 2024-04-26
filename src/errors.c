@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.h                                         :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 22:00:17 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 10:59:34 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/25 14:39:21 by prizmo            #+#    #+#             */
+/*   Updated: 2024/04/26 15:14:07 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETTINGS_H
-# define SETTINGS_H
+#include "../fractol.h"
 
-# define C_KEY 99
-# define ESCAPE 65307
-# define LEFT_ARROW 65361
-# define RIGHT_ARROW 65363
-# define DOWN_ARROW 65364
-# define UP_ARROW 65362
-# define ZOOM_IN 65451
-# define ZOOM_OUT 65453
-# define EVENT_KEY_DOWN 2
-# define ENTER 65293
-//# define MASK 1L<<0
-# define LEFT_SHIFT 65505
-# define H_KEY 104
-# define WIDTH 500
-# define HEIGHT 500
+void	exit_handler(void)
+{
+	ft_putstr_fd("Usage: ./fractol [mandelbrot | julia |", 2);
+	ft_putendl_fd(" burning_ship] [julia values]", 2);
+	exit(1);
+}
 
-#endif
+int	destroy(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
