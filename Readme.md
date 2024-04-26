@@ -20,7 +20,7 @@ Computer Graphics Fractals
 
 Download the minilibx library from its github repo
 ```bash
-https://github.com/42paris/minilibx.git
+https://github.com/42paris/minilibx-linux.git
 ```
 ```bash
 git clone https://github.com/zelbassa/fract-ol.git
