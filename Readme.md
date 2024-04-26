@@ -18,10 +18,18 @@ Computer Graphics Fractals
 
 ## Usage/Examples
 
+Download the minilibx library from its github repo
+```bash
+https://github.com/42paris/minilibx.git
+```
 ```bash
 git clone https://github.com/zelbassa/fract-ol.git
 cd mlx && ./configure
 make all
+```
+Run the program
+```bash
+./fractol [mandelbrot | julia (arguments) | burning_ship]
 ```
 
 
