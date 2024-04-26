@@ -6,7 +6,7 @@
 /*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 22:00:17 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 10:59:34 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/26 15:30:35 by prizmo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 //# define MASK 1L<<0
 # define LEFT_SHIFT 65505
 # define H_KEY 104
-# define WIDTH 500
-# define HEIGHT 500
+# define WIDTH 1080
+# define HEIGHT 1080
 
 #endif
