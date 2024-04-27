@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 09:54:34 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 11:54:35 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/26 16:37:08 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 18:36:21 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ double	atoi_double(char *str)
 	i = 0;
 	sign = 1;
 	result = process_integer_part(str, &i, &sign);
-	result += process_fractional_part(str, &i);
+	if (result != 0.0)
+		result += process_fractional_part(str, &i);
 	return (result * sign);
 }

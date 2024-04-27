@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 14:39:21 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 15:14:07 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/26 16:36:43 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 20:23:33 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	exit_handler(void)
 int	destroy(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
+	free(vars->mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

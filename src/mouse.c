@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 14:21:19 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/25 14:21:20 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/26 16:37:12 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 16:37:13 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ int	handle_mouse(int button, int x, int y, t_config *config)
 		config->offset_y = 0;
 	}
 	redraw(config, vars);
+	return (0);
 }

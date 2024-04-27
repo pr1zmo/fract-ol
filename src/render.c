@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 09:54:40 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 13:00:12 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/26 16:37:18 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 16:56:07 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	redraw(t_config *settings, t_vars *vars)
 
 int	render(t_config configs, t_complex c, t_complex z, t_params *ints)
 {
-	if (ft_strncmp(configs.name, "mandelbrot", 10) == 0)
+	if (ft_strcmp(configs.name, "mandelbrot") == 0)
 		return (mandelbrot(configs, c, z, ints));
-	else if (ft_strncmp(configs.name, "julia", 5) == 0)
+	else if (ft_strcmp(configs.name, "julia") == 0)
 		return (julia(configs, c, z, ints));
-	else if (ft_strncmp(configs.name, "burning_ship", 12) == 0)
+	else if (ft_strcmp(configs.name, "burning_ship") == 0)
 		return (burning_ship(configs, z, c, ints));
 	return (0);
 }

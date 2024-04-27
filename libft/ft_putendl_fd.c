@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 17:21:25 by zelbassa          #+#    #+#             */
-/*   Updated: 2023/11/05 21:24:53 by zelbassa         ###   ########.fr       */
+/*   Created: 2024/04/26 16:51:57 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 18:19:21 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

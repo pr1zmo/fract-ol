@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 21:22:24 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 15:13:41 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/26 16:36:49 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 20:24:13 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	close_window(int keycode, t_config *settings)
 {
-	printf("here\n");
 	mlx_destroy_window(settings->vars.mlx, settings->vars.win);
+	free(settings->vars.mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
@@ -40,7 +40,9 @@ void	config_init(t_config *settings, char **av, t_vars vars, t_data img)
 	settings->offset_x = 0;
 	settings->offset_y = 0;
 	settings->palette = 1;
-	if (av[2] && av[3])
+	if (av[2] && av[3]
+		&& (ft_isdigit(av[2][0]) || ft_isdigit(av[2][1]))
+		&& (ft_isdigit(av[3][0]) || ft_isdigit(av[3][1])))
 	{
 		settings->julia.x = atoi_double(av[2]);
 		settings->julia.y = atoi_double(av[3]);
@@ -60,12 +62,12 @@ void	check_args(int ac, char **av)
 		exit_handler();
 	if (ac == 2)
 	{
-		if (ft_strncmp("mandelbrot", av[1], 10) == 0)
+		if (ft_strcmp("mandelbrot", av[1]) == 0)
 			return ;
-		if (ft_strncmp("burning_ship", av[1], 12) == 0)
+		if (ft_strcmp("burning_ship", av[1]) == 0)
 			return ;
 	}
-	if (ac == 4 && ft_strncmp("julia", av[1], 5) == 0)
+	if (ac == 4 && ft_strcmp("julia", av[1]) == 0)
 		return ;
 	else
 		exit_handler();

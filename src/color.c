@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 09:54:26 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 13:05:56 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/26 16:36:32 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 16:36:33 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,16 @@ t_RGB	black_n_white(int iteration, int max_iterations)
 
 t_RGB	get_color(int variation, int iteration, int max_iterations)
 {
+	t_RGB	color;
+
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
 	if (variation == 1)
-		return (basic_variation(iteration, max_iterations));
+		color = basic_variation(iteration, max_iterations);
 	else if (variation == 2)
-		return (colorful_variation(iteration, max_iterations));
+		color = colorful_variation(iteration, max_iterations);
 	else if (variation == 3)
-		return (black_n_white(iteration, max_iterations));
+		color = black_n_white(iteration, max_iterations);
+	return (color);
 }

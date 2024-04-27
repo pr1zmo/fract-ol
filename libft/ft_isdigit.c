@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 17:19:32 by zelbassa          #+#    #+#             */
-/*   Updated: 2023/11/03 18:23:37 by zelbassa         ###   ########.fr       */
+/*   Created: 2024/04/26 16:45:50 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 18:17:23 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

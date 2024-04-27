@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:24:24 by zelbassa          #+#    #+#             */
-/*   Updated: 2024/04/26 15:14:39 by prizmo           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:33:46 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "mlx.h"
 # include "settings.h"
 # include <math.h>
-# include <stdint-gcc.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

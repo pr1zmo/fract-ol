@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prizmo <prizmo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 22:00:17 by prizmo            #+#    #+#             */
-/*   Updated: 2024/04/26 15:30:35 by prizmo           ###   ########.fr       */
+/*   Created: 2024/04/26 16:36:08 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 16:59:09 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@
 # define ZOOM_OUT 65453
 # define EVENT_KEY_DOWN 2
 # define ENTER 65293
-//# define MASK 1L<<0
 # define LEFT_SHIFT 65505
 # define H_KEY 104
-# define WIDTH 1080
-# define HEIGHT 1080
+# define WIDTH 400
+# define HEIGHT 400
 
 #endif

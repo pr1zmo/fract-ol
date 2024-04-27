@@ -5,21 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 17:21:55 by zelbassa          #+#    #+#             */
-/*   Updated: 2023/11/05 23:43:54 by zelbassa         ###   ########.fr       */
+/*   Created: 2024/04/26 16:49:47 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 18:17:59 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stddef.h>
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(char const *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (str[i])
 		i++;
 	return (i);
 }

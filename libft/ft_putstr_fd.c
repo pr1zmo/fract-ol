@@ -5,19 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zelbassa <zelbassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 17:21:29 by zelbassa          #+#    #+#             */
-/*   Updated: 2023/11/10 15:02:58 by zelbassa         ###   ########.fr       */
+/*   Created: 2024/04/26 16:48:56 by zelbassa          #+#    #+#             */
+/*   Updated: 2024/04/26 18:19:11 by zelbassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *str, int fd)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i ++;
-	write(fd, str, i);
+	write(fd, s, ft_strlen(s));
 }
